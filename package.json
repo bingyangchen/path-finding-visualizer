@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jamison-Chen/path-finding-visualizer.git"
+    "url": "git+https://github.com/bingyangchen/path-finding-visualizer.git"
   },
   "keywords": [],
   "author": "Bing-Yang Chen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jamison-Chen/path-finding-visualizer/issues"
+    "url": "https://github.com/bingyangchen/path-finding-visualizer/issues"
   },
   "homepage": "https://byc1999.com/path-finding-visualizer",
   "devDependencies": {
