@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, viewport-fit=cover"
+        />
+        <meta
+            name="description"
+            content="Interactive path-finding algorithm visualizer. Learn and understand popular algorithms like Dijkstra's, A*, and Bellman-Ford through step-by-step animations. Features maze generation, adjustable speeds, and interactive controls."
+        />
+        <meta
+            name="keywords"
+            content="path-finding, algorithms, pathfinding visualizer, Dijkstra algorithm, A* algorithm, Bellman-Ford, algorithm visualization, interactive learning, computer science education, maze generation, TypeScript"
+        />
+        <meta name="author" content="Bing-Yang Chen" />
+        <meta name="robots" content="index, follow" />
+        <meta
+            property="og:title"
+            content="Path-Finding Algorithm Visualizer | Interactive Learning Tool"
+        />
+        <meta
+            property="og:description"
+            content="Explore and master path-finding algorithms through interactive visualization. Features Dijkstra's, A*, and Bellman-Ford algorithms with step-by-step animations and maze generation."
+        />
+        <meta property="og:image" content="assets/og-image.png" />
+        <meta
+            property="og:url"
+            content="https://byc1999.com/path-finding-visualizer/"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Path-Finding Visualizer" />
+        <link
+            rel="canonical"
+            href="https://byc1999.com/path-finding-visualizer/"
+        />
+        <link rel="icon" href="./assets/maze.png" />
+        <link rel="stylesheet" href="./style.css" />
+        <script type="module" src="./js/main.js" defer></script>
+        <title>
+            Path-Finding Algorithm Visualizer | Interactive Learning Tool
+        </title>
+    </head>
+    <body>
+        <div class="control-panel">
+            <div class="left">
+                <img class="logo" src="./assets/maze.png" alt="logo" />
+                <div class="text">Path-Finding Visualizer</div>
+            </div>
+            <div class="mid">
+                <div
+                    class="button prev with-hint"
+                    data-hint-text="Previous Algorithm"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="m13.646,18.342l-5.281-5.281c-.283-.283-.439-.66-.439-1.061s.156-.777.439-1.061l5.281-5.281.707.707-5.281,5.281c-.094.095-.146.22-.146.354s.052.259.146.354l5.281,5.281-.707.707Z"
+                        />
+                    </svg>
+                </div>
+                <div
+                    class="algorithm with-hint"
+                    data-hint-text="See Explanation"
+                ></div>
+                <div
+                    class="button next with-hint"
+                    data-hint-text="Next Algorithm"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="m10.279,18.342l-.707-.707,5.281-5.281c.094-.095.146-.22.146-.354s-.052-.259-.146-.354l-5.281-5.281.707-.707,5.281,5.281c.283.283.439.66.439,1.061s-.156.777-.439,1.061l-5.281,5.281Z"
+                        />
+                    </svg>
+                </div>
+            </div>
+            <div class="right">
+                <div
+                    class="button visualize with-hint"
+                    data-hint-text="Visualize"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="M20.494,7.968l-9.54-7A5,5,0,0,0,3,5V19a5,5,0,0,0,7.957,4.031l9.54-7a5,5,0,0,0,0-8.064Zm-1.184,6.45-9.54,7A3,3,0,0,1,5,19V5A2.948,2.948,0,0,1,6.641,2.328,3.018,3.018,0,0,1,8.006,2a2.97,2.97,0,0,1,1.764.589l9.54,7a3,3,0,0,1,0,4.836Z"
+                        />
+                    </svg>
+                </div>
+                <div class="button clean with-hint" data-hint-text="Clean">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <g id="_01_align_center" data-name="01 align center">
+                            <path
+                                d="M18.965,8.464l5.029-5.029L22.565,2.006,17.519,7.051,15.313,4.895a2.011,2.011,0,0,0-2.724-.073A19.71,19.71,0,0,1,6.226,8.687L-.006,10.514v.756A12.892,12.892,0,0,0,13.006,24.006h1.241l.261-.182a14.98,14.98,0,0,0,6.886-12.081,2.013,2.013,0,0,0-.611-1.5ZM13.9,6.34l5.477,5.341a12.652,12.652,0,0,1-.456,3.015L11.941,7.9A24.691,24.691,0,0,0,13.9,6.34Zm-.294,15.645h-.6a11.153,11.153,0,0,1-4.293-.859,11.55,11.55,0,0,0,4.348-3.8l.518-.76L11.91,15.43l-.518.761A9.539,9.539,0,0,1,7.8,19.324l-1.229.618a10.9,10.9,0,0,1-2.585-2.563,11.632,11.632,0,0,0,4.357-2.657L6.932,13.277a9.611,9.611,0,0,1-3.974,2.317,10.4,10.4,0,0,1-.921-3.575l4.755-1.394a15.234,15.234,0,0,0,3.423-1.59l7.911,7.7A14.1,14.1,0,0,1,13.608,21.985Z"
+                            />
+                        </g>
+                    </svg>
+                </div>
+                <div
+                    class="button generate-maze with-hint"
+                    data-hint-text="Generate Maze"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="m18 9.064a3.049 3.049 0 0 0 -.9-2.164 3.139 3.139 0 0 0 -4.334 0l-11.866 11.869a3.064 3.064 0 0 0 4.33 4.331l11.87-11.869a3.047 3.047 0 0 0 .9-2.167zm-14.184 12.624a1.087 1.087 0 0 1 -1.5 0 1.062 1.062 0 0 1 0-1.5l7.769-7.77 1.505 1.505zm11.872-11.872-2.688 2.689-1.5-1.505 2.689-2.688a1.063 1.063 0 1 1 1.5 1.5zm-10.825-6.961 1.55-.442.442-1.55a1.191 1.191 0 0 1 2.29 0l.442 1.55 1.55.442a1.191 1.191 0 0 1 0 2.29l-1.55.442-.442 1.55a1.191 1.191 0 0 1 -2.29 0l-.442-1.55-1.55-.442a1.191 1.191 0 0 1 0-2.29zm18.274 14.29-1.55.442-.442 1.55a1.191 1.191 0 0 1 -2.29 0l-.442-1.55-1.55-.442a1.191 1.191 0 0 1 0-2.29l1.55-.442.442-1.55a1.191 1.191 0 0 1 2.29 0l.442 1.55 1.55.442a1.191 1.191 0 0 1 0 2.29zm-5.382-14.645 1.356-.387.389-1.358a1.042 1.042 0 0 1 2 0l.387 1.356 1.356.387a1.042 1.042 0 0 1 0 2l-1.356.387-.387 1.359a1.042 1.042 0 0 1 -2 0l-.387-1.355-1.358-.389a1.042 1.042 0 0 1 0-2z"
+                        />
+                    </svg>
+                </div>
+                <div
+                    class="button settings with-hint"
+                    data-hint-text="Settings"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z"
+                        />
+                        <path
+                            d="M21.294,13.9l-.444-.256a9.1,9.1,0,0,0,0-3.29l.444-.256a3,3,0,1,0-3-5.2l-.445.257A8.977,8.977,0,0,0,15,3.513V3A3,3,0,0,0,9,3v.513A8.977,8.977,0,0,0,6.152,5.159L5.705,4.9a3,3,0,0,0-3,5.2l.444.256a9.1,9.1,0,0,0,0,3.29l-.444.256a3,3,0,1,0,3,5.2l.445-.257A8.977,8.977,0,0,0,9,20.487V21a3,3,0,0,0,6,0v-.513a8.977,8.977,0,0,0,2.848-1.646l.447.258a3,3,0,0,0,3-5.2Zm-2.548-3.776a7.048,7.048,0,0,1,0,3.75,1,1,0,0,0,.464,1.133l1.084.626a1,1,0,0,1-1,1.733l-1.086-.628a1,1,0,0,0-1.215.165,6.984,6.984,0,0,1-3.243,1.875,1,1,0,0,0-.751.969V21a1,1,0,0,1-2,0V19.748a1,1,0,0,0-.751-.969A6.984,6.984,0,0,1,7.006,16.9a1,1,0,0,0-1.215-.165l-1.084.627a1,1,0,1,1-1-1.732l1.084-.626a1,1,0,0,0,.464-1.133,7.048,7.048,0,0,1,0-3.75A1,1,0,0,0,4.79,8.992L3.706,8.366a1,1,0,0,1,1-1.733l1.086.628A1,1,0,0,0,7.006,7.1a6.984,6.984,0,0,1,3.243-1.875A1,1,0,0,0,11,4.252V3a1,1,0,0,1,2,0V4.252a1,1,0,0,0,.751.969A6.984,6.984,0,0,1,16.994,7.1a1,1,0,0,0,1.215.165l1.084-.627a1,1,0,1,1,1,1.732l-1.084.626A1,1,0,0,0,18.746,10.125Z"
+                        />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="canvas"></div>
+        <div class="modal">
+            <div class="background"></div>
+            <div class="main tutorial" data-order="0">
+                <div class="body" data-order="0">
+                    <video width="420" autoplay muted loop preload="auto">
+                        <source src="assets/demo1.mp4" type="video/mp4" />
+                    </video>
+                    <h2 class="subtitle">Drag to create wall.</h2>
+                </div>
+                <div class="body" data-order="1">
+                    <video width="420" autoplay muted loop preload="auto">
+                        <source src="assets/demo2.mp4" type="video/mp4" />
+                    </video>
+                    <h2 class="subtitle">Place the source and target.</h2>
+                </div>
+                <div class="body" data-order="2">
+                    <video width="420" autoplay muted loop preload="auto">
+                        <source src="assets/demo3.mp4" type="video/mp4" />
+                    </video>
+                    <h2 class="subtitle">Click Visualize.</h2>
+                </div>
+                <div class="body" data-order="3">
+                    <video width="420" autoplay muted loop preload="auto">
+                        <source src="assets/demo4.mp4" type="video/mp4" />
+                    </video>
+                    <h2 class="subtitle">Voila!!</h2>
+                </div>
+                <div class="footer">
+                    <div class="do-not-show">
+                        <input type="checkbox" name="doNotShow" value="s" />
+                        <div class="text">Don't show this again.</div>
+                    </div>
+                    <div class="button-container">
+                        <div class="button discard">Skip</div>
+                        <div class="button confirm">Next</div>
+                    </div>
+                </div>
+            </div>
+            <div class="main logo-and-copyright">
+                <div class="body">
+                    <div class="name-and-logo">
+                        <img class="logo" src="./assets/maze.png" alt="logo" />
+                        <div class="text">Path-Finding Visualizer</div>
+                    </div>
+                    <div class="copyright-container">
+                        <a
+                            class="copyright"
+                            href="https://byc1999.com"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            © byc1999.com
+                        </a>
+                        <a
+                            class="copyright"
+                            href="https://github.com/bingyangchen/path-finding-visualizer"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Source Code
+                        </a>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button confirm">Close</div>
+                </div>
+            </div>
+            <div class="main explain-algorithm">
+                <div class="header">
+                    <div class="text">Algorithm Explanation</div>
+                </div>
+                <div class="body"></div>
+                <div class="footer">
+                    <div class="button confirm">Got it!</div>
+                </div>
+            </div>
+            <div class="main clean-options">
+                <div class="header">
+                    <div class="icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <g
+                                id="_01_align_center"
+                                data-name="01 align center"
+                            >
+                                <path
+                                    d="M18.965,8.464l5.029-5.029L22.565,2.006,17.519,7.051,15.313,4.895a2.011,2.011,0,0,0-2.724-.073A19.71,19.71,0,0,1,6.226,8.687L-.006,10.514v.756A12.892,12.892,0,0,0,13.006,24.006h1.241l.261-.182a14.98,14.98,0,0,0,6.886-12.081,2.013,2.013,0,0,0-.611-1.5ZM13.9,6.34l5.477,5.341a12.652,12.652,0,0,1-.456,3.015L11.941,7.9A24.691,24.691,0,0,0,13.9,6.34Zm-.294,15.645h-.6a11.153,11.153,0,0,1-4.293-.859,11.55,11.55,0,0,0,4.348-3.8l.518-.76L11.91,15.43l-.518.761A9.539,9.539,0,0,1,7.8,19.324l-1.229.618a10.9,10.9,0,0,1-2.585-2.563,11.632,11.632,0,0,0,4.357-2.657L6.932,13.277a9.611,9.611,0,0,1-3.974,2.317,10.4,10.4,0,0,1-.921-3.575l4.755-1.394a15.234,15.234,0,0,0,3.423-1.59l7.911,7.7A14.1,14.1,0,0,1,13.608,21.985Z"
+                                />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text">Clean Options</div>
+                </div>
+                <div class="body">
+                    <div class="left">
+                        <div class="option-container">
+                            <input type="radio" name="cleanType" />
+                            <div class="option-text">Retain the Wall</div>
+                        </div>
+                        <div class="image"></div>
+                    </div>
+                    <div class="right">
+                        <div class="option-container">
+                            <input type="radio" name="cleanType" />
+                            <div class="option-text">Clean All</div>
+                        </div>
+                        <div class="image"></div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button discard">Discard</div>
+                    <div class="button confirm-fill">Clean</div>
+                </div>
+            </div>
+            <div class="main settings">
+                <div class="header">
+                    <div class="icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z"
+                            />
+                            <path
+                                d="M21.294,13.9l-.444-.256a9.1,9.1,0,0,0,0-3.29l.444-.256a3,3,0,1,0-3-5.2l-.445.257A8.977,8.977,0,0,0,15,3.513V3A3,3,0,0,0,9,3v.513A8.977,8.977,0,0,0,6.152,5.159L5.705,4.9a3,3,0,0,0-3,5.2l.444.256a9.1,9.1,0,0,0,0,3.29l-.444.256a3,3,0,1,0,3,5.2l.445-.257A8.977,8.977,0,0,0,9,20.487V21a3,3,0,0,0,6,0v-.513a8.977,8.977,0,0,0,2.848-1.646l.447.258a3,3,0,0,0,3-5.2Zm-2.548-3.776a7.048,7.048,0,0,1,0,3.75,1,1,0,0,0,.464,1.133l1.084.626a1,1,0,0,1-1,1.733l-1.086-.628a1,1,0,0,0-1.215.165,6.984,6.984,0,0,1-3.243,1.875,1,1,0,0,0-.751.969V21a1,1,0,0,1-2,0V19.748a1,1,0,0,0-.751-.969A6.984,6.984,0,0,1,7.006,16.9a1,1,0,0,0-1.215-.165l-1.084.627a1,1,0,1,1-1-1.732l1.084-.626a1,1,0,0,0,.464-1.133,7.048,7.048,0,0,1,0-3.75A1,1,0,0,0,4.79,8.992L3.706,8.366a1,1,0,0,1,1-1.733l1.086.628A1,1,0,0,0,7.006,7.1a6.984,6.984,0,0,1,3.243-1.875A1,1,0,0,0,11,4.252V3a1,1,0,0,1,2,0V4.252a1,1,0,0,0,.751.969A6.984,6.984,0,0,1,16.994,7.1a1,1,0,0,0,1.215.165l1.084-.627a1,1,0,1,1,1,1.732l-1.084.626A1,1,0,0,0,18.746,10.125Z"
+                            />
+                        </svg>
+                    </div>
+                    <div class="text">Settings</div>
+                </div>
+                <div class="body">
+                    <div class="row cell-size">
+                        <div class="title">Cell Size</div>
+                        <div class="options">
+                            <div class="option-container">
+                                <input type="radio" name="cellSize" value="s" />
+                                <div class="option-text">Small</div>
+                            </div>
+                            <div class="option-container">
+                                <input type="radio" name="cellSize" value="m" />
+                                <div class="option-text">Medium</div>
+                            </div>
+                            <div class="option-container">
+                                <input type="radio" name="cellSize" value="l" />
+                                <div class="option-text">Large</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row speed">
+                        <div class="title">Speed</div>
+                        <div class="options">
+                            <div class="option-container">
+                                <input type="radio" name="speed" value="slow" />
+                                <div class="option-text">Slow</div>
+                            </div>
+                            <div class="option-container">
+                                <input
+                                    type="radio"
+                                    name="speed"
+                                    value="normal"
+                                />
+                                <div class="option-text">Normal</div>
+                            </div>
+                            <div class="option-container">
+                                <input type="radio" name="speed" value="fast" />
+                                <div class="option-text">Fast</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button discard">Discard</div>
+                    <div class="button confirm-fill">Save</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
