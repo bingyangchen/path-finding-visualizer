@@ -17,10 +17,13 @@ cp -r /tmp/main_js_backup js/
 
 cp /tmp/main_style_backup.css style.css
 
-rm -rf /tmp/main_js_backup
-rm /tmp/main_style_backup.css
-
 git add -A
 git commit -m "deploy"
 git push origin gh-pages
+
 git switch main
+cp -r /tmp/main_js_backup js/
+cp /tmp/main_style_backup.css style.css
+
+rm -rf /tmp/main_js_backup
+rm /tmp/main_style_backup.css
