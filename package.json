@@ -7,7 +7,8 @@
     "watch-tsc": "tsc -w",
     "watch-sass": "sass --watch --no-source-map --style=compressed style.scss style.css",
     "dev": "concurrently 'npm:watch-*' 'live-server --port=3000'",
-    "build": "tsc && sass --no-source-map --style=compressed style.scss style.css"
+    "build": "tsc && sass --no-source-map --style=compressed style.scss style.css",
+    "deploy": "sh deploy.sh"
   },
   "repository": {
     "type": "git",
