@@ -150,7 +150,7 @@ body {
                 &.source {
                     cursor: grab;
                     &::after {
-                        background-image: url("./icons/car.svg");
+                        background-image: url("./assets/car.svg");
                         background-position: center;
                         background-size: 70%;
                         background-repeat: no-repeat;
@@ -160,7 +160,7 @@ body {
                 &.target {
                     cursor: grab;
                     &::after {
-                        background-image: url("./icons/marker.svg");
+                        background-image: url("./assets/marker.svg");
                         background-position: center;
                         background-size: 70%;
                         background-repeat: no-repeat;
@@ -354,10 +354,10 @@ body {
                         background-repeat: no-repeat;
                     }
                     & > .left .image {
-                        background-image: url("./images/retain-the-wall.webp");
+                        background-image: url("./assets/retain-the-wall.webp");
                     }
                     & > .right .image {
-                        background-image: url("./images/clean-all.webp");
+                        background-image: url("./assets/clean-all.webp");
                     }
                 }
             }

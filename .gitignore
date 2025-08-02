@@ -545,3 +545,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 .DS_Store
+js/
+style.css
