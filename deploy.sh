@@ -5,10 +5,13 @@ set -e
 git switch main
 npm run build
 
+# For files that are not tracked by git, we need to copy them to a temporary directory
 cp -r js/ /tmp/main_js_backup
 cp style.css /tmp/main_style_backup.css
 
 git switch gh-pages
+
+# For files that are tracked by git, we need to copy them from main to gh-pages
 git show main:index.html > index.html
 
 rm -rf assets/
